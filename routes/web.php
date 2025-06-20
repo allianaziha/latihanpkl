@@ -58,3 +58,6 @@ Route::get('buku/{id}/edit', [MyController::class, 'edit']);
 Route::put('buku/{id}', [MyController::class, 'update']);
 //hapus
 Route::delete('buku/{id}', [MyController::class, 'destroy']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
