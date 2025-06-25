@@ -1160,7 +1160,7 @@
   <!-- menambahkan wadah js baru dan akan dipanggil ketika dibutuhkan -->
   @include('sweetalert::alert')
    @yield('js')
-   @yield('scripts')
+   @stack('scripts')
 </body>
 
 </html>
