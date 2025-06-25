@@ -8,6 +8,7 @@ use App\Http\Middleware\Admin;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,51 +30,58 @@ Route::get('/search', [FrontendController::class, 'search'])->name('product.sear
 Route::get('/about',[FrontendController::class, 'about']);
 
 //cart
-Route::get('/cart', [CartController::class, 'cart'])->name('cart.index');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/add-to-cart/{product}', [CartController::class, 'addToCart'])->name('cart.add');
 Route::put('/cart/update/{id}', [CartController::class, 'updateCart'])->name('cart.update');
 Route::delete('/cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
+Route::get('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+
+
+Route::post('/product/{product}/review', [\App\Http\Controllers\ReviewController::class, 'store'])
+    ->middleware('auth')->name('review.store');
+
+Route::get('/about', [FrontendController::class, 'about']);
 
 // rote basic
-Route::get('about', function () {
-    return 'ini halaman about';
-});
+// Route::get('about', function () {
+//     return 'ini halaman about';
+// });
 
-Route::get('profile', function (){
-    return view('profile');
-});
+// Route::get('profile', function (){
+//     return view('profile');
+// });
 
 //route parameter
-Route::get('produk/{namaproduk}', function ($a){
-    return 'saya membeli' .$a;
-});
+// Route::get('produk/{namaproduk}', function ($a){
+//     return 'saya membeli' .$a;
+// });
 
-Route::get('kategori/{namakategori}', function ($kategori){
-    return view('kategori', compact('kategori'));
-});
+// Route::get('kategori/{namakategori}', function ($kategori){
+//     return view('kategori', compact('kategori'));
+// });
 
-//route optional parameter
-Route::get('search/{keyword?}', function ($key = null){
-    return view('search', compact('key'));
-});
+// //route optional parameter
+// Route::get('search/{keyword?}', function ($key = null){
+//     return view('search', compact('key'));
+// });
 
-Route::get('toko/{barang?}/{kode?}', function ($barang = null, $kode = null){
-    return view('toko' , compact('barang','kode'));
-});
+// Route::get('toko/{barang?}/{kode?}', function ($barang = null, $kode = null){
+//     return view('toko' , compact('barang','kode'));
+// });
 
-//route buku
-Route::get('buku', [MyController::class, 'index']);
-//tambah buku
-Route::get('buku/create', [MyController::class, 'create']);
-Route::post('buku', [MyController::class, 'store']);
-//show
-Route::get('buku/{id}', [MyController::class, 'show']);
-//edit
-Route::get('buku/{id}/edit', [MyController::class, 'edit']);
-Route::put('buku/{id}', [MyController::class, 'update']);
-//hapus
-Route::delete('buku/{id}', [MyController::class, 'destroy']);
-Auth::routes();
+// //route buku
+// Route::get('buku', [MyController::class, 'index']);
+// //tambah buku
+// Route::get('buku/create', [MyController::class, 'create']);
+// Route::post('buku', [MyController::class, 'store']);
+// //show
+// Route::get('buku/{id}', [MyController::class, 'show']);
+// //edit
+// Route::get('buku/{id}/edit', [MyController::class, 'edit']);
+// Route::put('buku/{id}', [MyController::class, 'update']);
+// //hapus
+// Route::delete('buku/{id}', [MyController::class, 'destroy']);
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
