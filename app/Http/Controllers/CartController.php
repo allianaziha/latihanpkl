@@ -90,7 +90,7 @@ class CartController extends Controller
         //simpan order
         $order = Order::create([
             'user_id' => auth()->id(),
-            'user_code' => 'ORD-' . strtoupper(Str::random(8)),
+            'order_code' => 'ORD-' . strtoupper(Str::random(8)),
             'total_price' => $total,
             'status' => 'pending',
         ]);

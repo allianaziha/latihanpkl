@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    public $fillabel = ['user_id','order_code','total_price','status'];
+    public $fillable = ['user_id','order_code','total_price','status'];
 
     //relasi many to many
      public function products()

@@ -87,8 +87,7 @@
                             @endphp
                             <tr>
                                 <th class="text-center">Total</th>
-                                <td colspan="5" class="text-center"><b>Rp
-                                        {{ number_format($total, 0, ',', '.') }}</b></td>
+                                <td colspan="5" class="text-center"><b>Rp{{ number_format($total, 0, ',', '.') }}</b></td>
                             </tr>
                         </tbody>
                     </table>

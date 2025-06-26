@@ -303,8 +303,6 @@
         <div class="setting__wrap__heading">
             <h6><a href="#">Account</a></h6>
         </div>
-
-        
     </div>
 
     <!-- setting__wrap__list__end -->

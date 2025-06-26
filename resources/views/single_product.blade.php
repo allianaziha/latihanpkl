@@ -31,12 +31,7 @@
                             <img src="{{  Storage::url($product->image) }}" alt="{{ $product->name }}">
                         </div>
                     </div>
-                    <div class="featurearea__thumb__img featurearea__thumb__img__slider__active slider__default__arrow">
-                        <div class="featurearea__single__thumb__img">
-                            <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}">
-                        </div>
                     </div>
-                </div>
             </div>
 
             <!-- Product Info -->
@@ -87,7 +82,6 @@
                             <button type="submit" class="default__button">
                                 <i class="fas fa-shopping-cart"></i> Add to Cart
                             </button>
-                            <a href="#" class="default__button black__button">Buy it Now</a>
                         </div>
                     </form>
                 </div>
