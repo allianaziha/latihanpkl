@@ -42,7 +42,17 @@ Route::post('/product/{product}/review', [\App\Http\Controllers\ReviewController
 
 Route::get('/about', [FrontendController::class, 'about']);
 
-// rote basic
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//route untuk admin atau backend
+Route::group(['prefix'=>'admin','as' => 'backend.','middleware' => ['auth', Admin::class]], function (){
+    Route::get('/', [BackendController::class,'index']);
+    //crud
+    Route::resource('/category', CategoryController::class);
+    Route::resource('/product', ProductController::class);
+});
+
+// //rote basic
 // Route::get('about', function () {
 //     return 'ini halaman about';
 // });
@@ -51,7 +61,7 @@ Route::get('/about', [FrontendController::class, 'about']);
 //     return view('profile');
 // });
 
-//route parameter
+// //route parameter
 // Route::get('produk/{namaproduk}', function ($a){
 //     return 'saya membeli' .$a;
 // });
@@ -81,14 +91,5 @@ Route::get('/about', [FrontendController::class, 'about']);
 // Route::put('buku/{id}', [MyController::class, 'update']);
 // //hapus
 // Route::delete('buku/{id}', [MyController::class, 'destroy']);
-// Auth::routes();
+Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-//route untuk admin atau backend
-Route::group(['prefix'=>'admin','as' => 'backend.','middleware' => ['auth', Admin::class]], function (){
-    Route::get('/', [BackendController::class,'index']);
-    //crud
-    Route::resource('/category', CategoryController::class);
-    Route::resource('/product', ProductController::class);
-});
