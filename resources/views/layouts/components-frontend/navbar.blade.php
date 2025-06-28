@@ -292,26 +292,54 @@
     <!-- Mobile Menu end Here -->
 
     <!-- setting__wrap__list__start -->
-    <div class="setting__wrap__list">
-        <button class="setting__wrap__close">
-            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
-                <title>Close</title>
-                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M368 368L144 144M368 144L144 368"></path>
-            </svg>
-        </button>
+<div class="setting__wrap__list">
+    <button class="setting__wrap__close">
+        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+            <title>Close</title>
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M368 368L144 144M368 144L144 368"></path>
+        </svg>
+    </button>
 
-        <div class="setting__wrap__heading">
-            <h6><a href="#">Account</a></h6>
-        </div>
-        <div class="setting__wrap__heading">
-            <form method="POST" action="{{ route('logout') }}">
-            @csrf
-                <button type="submit" style="background:none;border:none;color:inherit;padding:0;cursor:pointer;">
-                    Logout
-                </button>
-            </form>
-        </div>
+    <div class="setting__wrap__heading">
+        <h6>
+            <a href="#">
+                @if(Auth::check())
+                    {{ Auth::user()->name }}
+                @else
+                    Account
+                @endif
+            </a>
+        </h6>
     </div>
+
+    <div class="setting__wrap__list__inner">
+        <ul>
+            <li>
+                <a href="{{ route('orders.index') }}">My Order</a>
+            </li>
+            @if(!Auth::check())
+                <li>
+                    <a href="{{ route('login') }}">Login</a>
+                </li>
+            @endif
+            @if(Auth::check())
+                <li>
+                    <a href="{{ route('logout') }}"
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+                </li>
+            @endif
+        </ul>
+    </div>
+</div>
+
+@if(Auth::check())
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+@endif
+
 
     <!-- setting__wrap__list__end -->
 
