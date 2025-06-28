@@ -25,8 +25,8 @@ class CartController extends Controller
     public function addToCart(Request $request, $id)
     {
         if (! Auth::check()) {
-            //jika belu  login redirect dengan alert
-            toast ('silahkan login terlebih dahulu untuk menambahkan ke kerangjang.' , 'error');
+            //jika belum login redirect dengan alert
+            toast ('silahkan login terlebih dahulu untuk menambahkan ke keranjang.' , 'error');
             return redirect('/login');
         }
 
@@ -63,7 +63,7 @@ class CartController extends Controller
         $cartItem->save();
 
         toast('jumlah berhasil diperbarui.', 'success');
-        return (redirect)->route('cart.index');
+        return redirect()->route('cart.index');
     }
 
     public function remove($id)

@@ -57,8 +57,7 @@ Route::group(['prefix'=>'admin','as' => 'backend.','middleware' => ['auth', Admi
     Route::resource('/category', CategoryController::class);
     Route::resource('/product', ProductController::class);
     Route::resource('/orders', OrdersController::class);
-    Route::put('/orders/{id}/status',[OrdersController::class, 'updateStatus'])
-        ->name('orders.updateStatus');
+    Route::put('/orders/{id}/status',[OrdersController::class, 'updateStatus'])->name('orders.updateStatus');
 
 });
 

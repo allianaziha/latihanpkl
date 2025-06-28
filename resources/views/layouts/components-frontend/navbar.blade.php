@@ -303,6 +303,14 @@
         <div class="setting__wrap__heading">
             <h6><a href="#">Account</a></h6>
         </div>
+        <div class="setting__wrap__heading">
+            <form method="POST" action="{{ route('logout') }}">
+            @csrf
+                <button type="submit" style="background:none;border:none;color:inherit;padding:0;cursor:pointer;">
+                    Logout
+                </button>
+            </form>
+        </div>
     </div>
 
     <!-- setting__wrap__list__end -->

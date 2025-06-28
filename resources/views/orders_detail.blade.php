@@ -2,11 +2,11 @@
 
 @section('content')
 <!-- breadcrumb -->
-<div class="breadcrumb">
+<<div class="breadcrumb">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
-                <div class="breadcrumb_title">
+                <div class="breadcrumb__title">
                     <h1>Order Detail</h1>
                     <ul>
                         <li><a href="{{ url('/') }}">Home</a></li>
