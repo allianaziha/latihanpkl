@@ -179,7 +179,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="best__selling__button">
-                    <a class="default__button" href="#">View All</a>
+                    <a class="default__button" href="{{ route('product.index') }}">View All</a>
                 </div>
             </div>
         </div>
